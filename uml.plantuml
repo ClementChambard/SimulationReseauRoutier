@@ -38,6 +38,7 @@ enum EtatFeu {
     VERT
     ROUGE
     ORANGE
+    appliquer(Voiture) : void
 }
 
 
@@ -48,21 +49,21 @@ class PanneauDeLimitation {
 }
 
 abstract Feu {
+    appliquer(Voiture) : void
     etat: EtatFeu
 }
 
 class FeuBicolore {
-    appliquer(Voiture) : void
     envoyerSignal(int) : void
 }
 
 class FeuTricolore {
-    appliquer(Voiture) : void
     envoyerSignal(int) : void
 }
 
 
 abstract Capteur {
+    active : boolean
     {abstract} activer(Voiture) : void
 }
 
@@ -76,6 +77,7 @@ class CapteurDeVitesse {
 
 abstract ElementDeRegulation {
      {abstract} capteurActive(Capteur) : void
+     {abstract} miseAJourTemporelle() : void
 }
 
 class Extremite {
