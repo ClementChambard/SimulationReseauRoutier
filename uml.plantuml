@@ -1,0 +1,122 @@
+@startuml
+
+class Segment {
+    longueur: float
+}
+
+abstract Jonction {
+    {abstract} progresser(Voiture, float) : void
+}
+
+class JonctionSimple {
+    progresser(Voiture, float) : void
+}
+
+class Barriere {
+    progresser(Voiture, float) : void
+}
+
+class Carrefour{
+    progresser(Voiture, float) : void
+}
+
+
+class Voiture {
+    id: int
+    vitesseMax: float
+    vitesse: float
+    avancer(float) : void
+}
+
+abstract Semaphore {
+    active: boolean
+    {abstract} appliquer(Voiture) : void
+    {abstract} envoyerSignal(int) : void
+}
+
+enum EtatFeu {
+    VERT
+    ROUGE
+    ORANGE
+}
+
+
+class PanneauDeLimitation {
+    vitesseLimite: float
+    appliquer(Voiture) : void
+    envoyerSignal(int) : void
+}
+
+abstract Feu {
+    etat: EtatFeu
+}
+
+class FeuBicolore {
+    appliquer(Voiture) : void
+    envoyerSignal(int) : void
+}
+
+class FeuTricolore {
+    appliquer(Voiture) : void
+    envoyerSignal(int) : void
+}
+
+
+abstract Capteur {
+    {abstract} activer(Voiture) : void
+}
+
+class CapteurDePresence {
+    activer(Voiture) : void
+}
+
+class CapteurDeVitesse {
+    activer(Voiture) : void
+}
+
+abstract ElementDeRegulation {
+     {abstract} capteurActive(Capteur) : void
+}
+
+class Extremite {
+    cote: boolean
+}
+
+class Position {
+    cote: boolean
+    distance: float
+}
+
+class RegulationCarrefour4Feux {
+     capteurActive(Capteur) : void
+}
+
+
+Voiture "*\nsesVoitures" --- "1\nsonSegment" Segment : > est sur
+Segment "2\nsesSegments" --- "1..*\nsesJonctions" Jonction
+Segment "1\nsonSegment" *-- "*\nsesSemaphores" Semaphore
+Segment "1\nsonSegment" *-- "*\nsesCapteurs" Capteur
+Capteur "*\nsesCapteurs" --- "*\nsesSemaphores" Semaphore
+ElementDeRegulation "*\nsesElDeReg" --- "*\nsesCapteurs" Capteur
+ElementDeRegulation "*\nsesElDeReg" --- "*\nsesSemaphores" Semaphore
+
+(Voiture, Segment) .. Position
+(Capteur, Segment) .. Position
+(Semaphore, Segment) .. Extremite
+
+Jonction <|-- Carrefour
+Jonction <|-- JonctionSimple
+Jonction <|-- Barriere
+
+Semaphore <|-- Feu
+Semaphore <|-- PanneauDeLimitation
+
+Feu <|-- FeuTricolore
+Feu <|-- FeuBicolore
+
+Capteur <|-- CapteurDePresence
+Capteur <|-- CapteurDeVitesse
+
+ElementDeRegulation <|-- RegulationCarrefour4Feux
+
+@enduml
