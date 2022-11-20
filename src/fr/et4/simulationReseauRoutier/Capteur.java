@@ -1,5 +1,7 @@
 package fr.et4.simulationReseauRoutier;
 
+import java.util.ArrayList;
+
 abstract class Capteur {
 
     public Capteur() {

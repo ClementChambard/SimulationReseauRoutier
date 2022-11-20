@@ -1,10 +1,12 @@
 package fr.et4.simulationReseauRoutier;
 
+import java.util.ArrayList;
+
 public abstract class Semaphore {
 
     public Semaphore() {
         sesCapteurs = new ArrayList<>();
-        sesElementsDeRegularion = new ArrayList<>();
+        sesElementsDeRegulation = new ArrayList<>();
     }
 
     private boolean active;

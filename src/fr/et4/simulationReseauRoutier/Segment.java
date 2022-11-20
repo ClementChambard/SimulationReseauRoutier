@@ -43,4 +43,20 @@ public class Segment {
 	public void setSud(Jonction sud) {
 		this.sud = sud;
 	}
+
+	public ArrayList<Semaphore> getSemaphore() {
+		return semaphore;
+	}
+
+	public void setSemaphore(ArrayList<Semaphore> semaphore) {
+		this.semaphore = semaphore;
+	}
+
+	public ArrayList<Capteur> getCapteur() {
+		return capteur;
+	}
+
+	public void setCapteur(ArrayList<Capteur> capteur) {
+		this.capteur = capteur;
+	}
 }

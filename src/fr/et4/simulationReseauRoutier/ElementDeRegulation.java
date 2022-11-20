@@ -1,5 +1,7 @@
 package fr.et4.simulationReseauRoutier;
 
+import java.util.ArrayList;
+
 public abstract class ElementDeRegulation {
 
     public ElementDeRegulation() {
