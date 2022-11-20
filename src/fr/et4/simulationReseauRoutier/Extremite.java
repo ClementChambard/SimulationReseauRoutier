@@ -4,7 +4,7 @@ public class Extremite {
 	
 	private boolean cote;
 
-	public boolean isCote() {
+	public boolean getCote() {
 		return cote;
 	}
 

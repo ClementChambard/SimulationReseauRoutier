@@ -2,11 +2,17 @@ package fr.et4.simulationReseauRoutier;
 
 public class Position {
 
-	private boolean cote;
+	private boolean cote; // Par convention Nord vers Sud = true et Sud vers Nord = false
 	private float distance;
 	private Segment segment;
 	
-	public boolean isCote() {
+	public Position(boolean c, float distance, Segment segment) {
+		this.cote=c;
+		this.distance=distance;
+		this.segment=segment;
+	}
+	
+	public boolean getCote() {
 		return cote;
 	}
 	public void setCote(boolean cote) {

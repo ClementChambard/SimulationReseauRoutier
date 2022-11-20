@@ -8,8 +8,15 @@ public class PanneauDeLimitation extends Semaphore {
     public void setVitesseLimite(float v) { vitesseLimite = v; }
 
     @Override
-    public void appliquer(Voiture v) {}
+    public void appliquer(Voiture v) {
+    	if(getActive()) {
+    		v.setVitesse(vitesseLimite);
+    		v.setVitesseLimite(vitesseLimite);
+    	}
+    }
 
     @Override
-    public void envoyerSignal(int s) {}
+    public void envoyerSignal(int s) {
+    	// Pas de signal pour un panneau de vitesse
+    }
 }

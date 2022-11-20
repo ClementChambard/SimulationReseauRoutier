@@ -4,8 +4,7 @@ public class Barriere extends Jonction {
 
 	@Override
 	public void progresser(Voiture v, float f) {
-		// TODO Auto-generated method stub
-		
+		// Message impossible
 	}
 
 }
