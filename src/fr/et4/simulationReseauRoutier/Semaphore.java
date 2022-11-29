@@ -13,7 +13,7 @@ public abstract class Semaphore {
         AllSemaphore.add(this);
     }
 
-    private boolean active;
+    private boolean active=true;
 
     public boolean getActive() { return active; }
     public void setActive(boolean active) { this.active = active; }

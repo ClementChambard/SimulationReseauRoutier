@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class Main {
 	
 	public static void main(String[] arg){
-		Voiture v1 = new Voiture(4);
-		Voiture v2 = new Voiture(3);
+		Voiture v1 = new Voiture(10);
+		Voiture v2 = new Voiture(8);
 		Voiture v3 = new Voiture(5);
 		Segment s1 = new Segment(10);
 		Segment s2 = new Segment(20);
@@ -66,9 +66,9 @@ public class Main {
 		FeuTricolore feu4 = new FeuTricolore(false);
 		feu4.setEtat(EtatFeu.VERT);
 		s5.getSemaphore().add(feu4);
-		PanneauDeLimitation p1 = new PanneauDeLimitation(true, 5);
+		PanneauDeLimitation p1 = new PanneauDeLimitation(true, 10);
 		s6.getSemaphore().add(p1);
-		PanneauDeLimitation p2 = new PanneauDeLimitation(true, 3);
+		PanneauDeLimitation p2 = new PanneauDeLimitation(true, 5);
 		s7.getSemaphore().add(p2);
 		s4.getSemaphore().add(p2);
 		RegulationCarrefour4Feux reg1 = new RegulationCarrefour4Feux();
