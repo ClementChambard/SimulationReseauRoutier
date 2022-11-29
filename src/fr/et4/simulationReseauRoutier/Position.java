@@ -11,7 +11,7 @@ public class Position {
 		this.distance=distance;
 		this.segment=segment;
 	}
-	
+
 	public boolean getCote() {
 		return cote;
 	}

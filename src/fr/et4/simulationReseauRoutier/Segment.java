@@ -11,7 +11,10 @@ public class Segment {
 	private Jonction nord;
 	private Jonction sud;
 	
-
+	public Segment(float l) {
+		longueur=l;
+	}
+	
 	public float getLongueur() {
 		return longueur;
 	}

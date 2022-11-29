@@ -14,6 +14,7 @@ public enum EtatFeu {
 			break;
 		case ROUGE:
 			v.setVitesse(0);
+			System.out.println("La voiture " + v.getId() + " est arrêtée à un feu rouge.");
 			break;
 		}
 	}

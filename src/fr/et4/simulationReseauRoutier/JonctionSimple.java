@@ -1,6 +1,12 @@
 package fr.et4.simulationReseauRoutier;
 
 public class JonctionSimple extends Jonction {
+	
+	public JonctionSimple(Segment s1, Segment s2) {
+		super();
+		getSesSegments().add(s1);
+		getSesSegments().add(s2);
+	}
 
 	@Override
 	public void progresser(Voiture v, float f) {

@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 public abstract class Jonction {
 	
+	public Jonction() {
+		sesSegments= new ArrayList <>();
+	}
+	
 	private ArrayList<Segment> sesSegments;
 
 	public abstract void progresser(Voiture v, float f);

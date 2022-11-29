@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 abstract class Capteur {
 
-    public Capteur() {
+    public Capteur(float distance, boolean cote, Segment s) {
+    	position = new Position(cote, distance, s);
         sesElementsDeRegulation = new ArrayList<>();
         sesSemaphores = new ArrayList<>();
     }
@@ -27,6 +28,14 @@ abstract class Capteur {
 
     public ArrayList<Semaphore> getSesSemaphores() { return sesSemaphores; }
 
-    public abstract void activer(Voiture v);
+    public void activer(Voiture v) {
+    	for(ElementDeRegulation e : sesElementsDeRegulation) {
+    		e.capteurActive(this);
+    	}
+    	if(active) {
+    		System.out.println("La voiture " + v.getId() + " est entrée en collision.");
+    	}
+    	active=true;
+	}
 
 }

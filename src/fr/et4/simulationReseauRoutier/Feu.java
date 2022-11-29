@@ -2,7 +2,11 @@ package fr.et4.simulationReseauRoutier;
 
 public abstract class Feu extends Semaphore {
 
-    private EtatFeu etat;
+    public Feu(boolean cote) {
+		super(cote);
+	}
+
+	private EtatFeu etat;
 
     public EtatFeu getEtat() { return etat; }
     public void setEtat(EtatFeu e) { etat = e; }

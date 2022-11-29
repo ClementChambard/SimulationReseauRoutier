@@ -4,9 +4,13 @@ import java.util.ArrayList;
 
 public abstract class Semaphore {
 
-    public Semaphore() {
+	private static ArrayList<Semaphore> AllSemaphore = new ArrayList<>();
+	
+    public Semaphore(boolean cote) {
+    	extremite = new Extremite(cote);
         sesCapteurs = new ArrayList<>();
         sesElementsDeRegulation = new ArrayList<>();
+        AllSemaphore.add(this);
     }
 
     private boolean active;
@@ -29,4 +33,12 @@ public abstract class Semaphore {
 
     public abstract void appliquer(Voiture v);
     public abstract void envoyerSignal(int s);
+    
+    public void miseAJourTemporelle() {}
+    
+    public static void Majtemporelle() {
+    	for(Semaphore s : AllSemaphore) {
+    		s.miseAJourTemporelle();
+    	}
+    }
 }

@@ -1,5 +1,7 @@
 package fr.et4.simulationReseauRoutier;
 
+import java.util.ArrayList;
+
 public class Voiture {
 
 	private int id;
@@ -7,23 +9,50 @@ public class Voiture {
 	private float vitesse;
 	private Position p;
 	private float vitesseLimite;
+	private static ArrayList<Voiture> AllVoiture = new ArrayList<>();
+	
+	public Voiture(){
+		AllVoiture.add(this);
+	}
 	
 	public void avancer(float a) {
 		// Verifier capteur sur segment actuel
-		if(p.getDistance()+a>p.getSegment().getLongueur()) {
-			for(Semaphore s : p.getSegment().getSemaphore()) {
+		float distancei = p.getDistance();
+		float distancef = distancei+a;
+		Segment segment = p.getSegment();
+		for(Capteur c : segment.getCapteur()) {
+			if(c.getPosition().getCote()!=p.getCote()) {
+				continue;
+			}
+			float distancecapteur = c.getPosition().getDistance();
+			if(distancecapteur<distancef && distancecapteur>distancei) {
+				c.activer(this);
+			}
+		}
+					
+		if(distancef>=segment.getLongueur()) {
+			for(Semaphore s : segment.getSemaphore()) {
 				if(s.getExtremite().getCote()==p.getCote()) {
 					s.appliquer(this);
 				}
 			}
 			// recalculer a si la vitesse a changé
-			Jonction j = p.getSegment().getNord();
+			float distancesegment = segment.getLongueur()-distancei;
+			float pourcentrestant = 1-(distancesegment/a);
+			a=pourcentrestant*vitesse;
+			if(a==0) {
+				p.setDistance(segment.getLongueur());
+				return;
+			}
+
+			Jonction j = segment.getNord();
 			if(p.getCote()) {
-				j = p.getSegment().getSud();
+				j = segment.getSud();
 			}
 			j.progresser(this, a);
+			return;
 		}
-		
+		p.setDistance(distancef);
 	}
 
 	public int getId() {
@@ -66,5 +95,9 @@ public class Voiture {
 		this.vitesseLimite = vitesseLimite;
 	}
 	
-	
+    public static void Majtemporelle() {
+    	for(Voiture v : AllVoiture) {
+    		v.avancer(v.vitesse);
+    	}
+    }
 }

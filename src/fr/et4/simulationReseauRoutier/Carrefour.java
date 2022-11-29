@@ -1,6 +1,13 @@
 package fr.et4.simulationReseauRoutier;
 
+import java.util.Collection;
+
 public class Carrefour extends Jonction{
+	
+	public Carrefour(Collection <? extends Segment> c) {
+		super();
+		getSesSegments().addAll(c);
+	}
 	
 	@Override
 	public void progresser(Voiture v, float f) {
