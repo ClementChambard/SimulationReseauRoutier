@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Segment {
 
+	
 	private float longueur;
 	private ArrayList<Voiture> voiture;
 	private ArrayList<Semaphore> semaphore;
@@ -13,6 +14,9 @@ public class Segment {
 	
 	public Segment(float l) {
 		longueur=l;
+		voiture = new ArrayList<>();
+		semaphore = new ArrayList<>();
+		capteur = new ArrayList<>();
 	}
 	
 	public float getLongueur() {

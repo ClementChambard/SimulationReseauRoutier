@@ -5,13 +5,18 @@ import java.util.ArrayList;
 public class Voiture {
 
 	private int id;
+	private static int nextid=1;
 	private float vitesseMax;
 	private float vitesse;
 	private Position p;
 	private float vitesseLimite;
 	private static ArrayList<Voiture> AllVoiture = new ArrayList<>();
 	
-	public Voiture(){
+	public Voiture(float vitesse){
+		this.id=nextid++;
+		this.vitesse=vitesse;
+		vitesseMax=vitesse;
+		vitesseLimite=vitesse;
 		AllVoiture.add(this);
 	}
 	

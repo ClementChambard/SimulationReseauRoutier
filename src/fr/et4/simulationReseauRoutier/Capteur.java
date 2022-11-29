@@ -3,11 +3,14 @@ package fr.et4.simulationReseauRoutier;
 import java.util.ArrayList;
 
 abstract class Capteur {
+	
+	private static ArrayList<Capteur> AllCapteur = new ArrayList<>();
 
     public Capteur(float distance, boolean cote, Segment s) {
     	position = new Position(cote, distance, s);
         sesElementsDeRegulation = new ArrayList<>();
         sesSemaphores = new ArrayList<>();
+        AllCapteur.add(this);
     }
 
     private boolean active;
@@ -37,5 +40,11 @@ abstract class Capteur {
     	}
     	active=true;
 	}
+    
+    public static void ResetAll() {
+    	for(Capteur c : AllCapteur) {
+    		c.setActive(false);
+    	}
+    }
 
 }

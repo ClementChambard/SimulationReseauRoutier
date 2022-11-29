@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class Main {
 	
 	public static void main(String[] arg){
-		Voiture v1 = new Voiture();
-		Voiture v2 = new Voiture();
-		Voiture v3 = new Voiture();
+		Voiture v1 = new Voiture(4);
+		Voiture v2 = new Voiture(3);
+		Voiture v3 = new Voiture(5);
 		Segment s1 = new Segment(10);
 		Segment s2 = new Segment(20);
 		Segment s3 = new Segment(20);
@@ -92,6 +92,8 @@ public class Main {
 		v2.setP(new Position(true, 0, s3));
 		v3.setP(new Position(true, 0, s7));
 		for(int i=0; i<100; i++) {
+			System.out.println("t=" + i);		
+			Capteur.ResetAll();
 			Voiture.Majtemporelle();
 			ElementDeRegulation.Majtemporelle();
 			Semaphore.Majtemporelle();
